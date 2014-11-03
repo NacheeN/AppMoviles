@@ -43,9 +43,7 @@ public class Main extends Activity {
         NavItems = new ArrayList<item_objct>();
         NavItems.add(new item_objct(titulos[0], NavIcons.getResourceId(0,-1)));
         NavItems.add(new item_objct(titulos[1], NavIcons.getResourceId(1,-1)));
-        NavItems.add(new item_objct(titulos[2], NavIcons.getResourceId(2,-1)));
-        NavItems.add(new item_objct(titulos[3], NavIcons.getResourceId(3,-1)));
-        NavItems.add(new item_objct(titulos[4], NavIcons.getResourceId(4,-1)));
+
 
         NavAdapter= new NavigationAdapter(this, NavItems);
         NavList.setAdapter(NavAdapter);
@@ -139,10 +137,6 @@ public class Main extends Activity {
         Log.d("AppMoviles","OnDestroy() iniciado");
     }
 
-    /*public void accionBoton(View v){
-        Log.d("AppMoviles","El boton fue clickeado");
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -150,6 +144,11 @@ public class Main extends Activity {
         return true;
     }
 
+    /*public void accionBoton(View v){
+        Log.d("AppMoviles","El boton fue clickeado");
+    }
+    */
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

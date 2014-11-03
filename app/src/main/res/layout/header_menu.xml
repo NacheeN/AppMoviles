@@ -10,7 +10,7 @@
         android:id="@+id/fondo_menu"
         android:layout_width="fill_parent"
         android:layout_height="150dp"
-        android:src="@drawable/back"
+        android:src="@drawable/back2"
         android:scaleType="centerCrop"
         />
     

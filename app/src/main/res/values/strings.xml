@@ -11,18 +11,12 @@
     <string name="boton_nuevotema">Nuevo Tema</string>
 
     <string-array name="nav_opciones">
-        <item>Perfil</item>
-        <item>Favorito</item>
-        <item>Evetos</item>
-        <item>Lugares</item>
-        <item>Etiquetas</item>
+        <item>Acerca de</item>
+        <item>Guia</item>
     </string-array>
     <array name="nav_iconos">
-        <item>@drawable/ic_action_call</item>
-        <item>@drawable/ic_action_overflow</item>
-        <item>@drawable/ic_action_person</item>
-        <item>@drawable/ic_action_refresh</item>
-        <item>@drawable/ic_action_search</item>
+        <item>@drawable/ic_action_about</item>
+        <item>@drawable/ic_action_help</item>
     </array>
     
 </resources>

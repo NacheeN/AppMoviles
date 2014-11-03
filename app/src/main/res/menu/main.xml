@@ -4,12 +4,14 @@
 
     <item
         android:id="@+id/menu_buscar"
+        android:orderInCategory="100"
         android:title="@string/boton_buscar"
         android:icon="@drawable/ic_action_search"
         android:showAsAction="always"
         ></item>
     <item
         android:id="@+id/menu_nuevotema"
+        android:orderInCategory="100"
         android:title="@string/boton_nuevotema"
         android:icon="@drawable/ic_action_new"
         android:showAsAction="always"

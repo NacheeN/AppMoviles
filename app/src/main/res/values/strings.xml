@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">stuckuy</string>
+    <string name="app_name">Stuckuy</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="action_search"></string>
@@ -11,12 +11,15 @@
     <string name="boton_nuevotema">Nuevo Tema</string>
 
     <string-array name="nav_opciones">
+        <item>Home</item>
         <item>Acerca de</item>
         <item>Guia</item>
     </string-array>
     <array name="nav_iconos">
+        <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_action_about</item>
         <item>@drawable/ic_action_help</item>
     </array>
+
     
 </resources>

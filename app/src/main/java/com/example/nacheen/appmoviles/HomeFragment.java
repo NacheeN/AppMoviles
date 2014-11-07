@@ -7,16 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by Gaston on 02/11/2014.
+ * Created by Gaston on 03/11/2014.
  */
-public class GuiaFragment extends Fragment{
+public class HomeFragment extends Fragment {
 
-    public GuiaFragment(){}
+    public HomeFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.guia, container, false);
+        View rootView = inflater.inflate(R.layout.home, container, false);
 
         return rootView;
     }

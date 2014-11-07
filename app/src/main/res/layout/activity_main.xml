@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff"
-        />
+        >
+
+    </FrameLayout>
 
     <ListView
         android:id="@+id/lista"
@@ -21,6 +23,7 @@
         android:dividerHeight="2dp"
         android:background="#424242"
         />
+
 
 
 </android.support.v4.widget.DrawerLayout>

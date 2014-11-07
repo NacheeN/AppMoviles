@@ -1,6 +1,8 @@
 package com.example.nacheen.appmoviles;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -12,13 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
-public class Main extends Activity {
+public class Main extends Activity implements PreguntasGuia.OnArticuloSelectedListener {
     private String[] titulos;
     private DrawerLayout NavDrawerLayout;
     private ListView NavList;
@@ -43,10 +44,20 @@ public class Main extends Activity {
         NavItems = new ArrayList<item_objct>();
         NavItems.add(new item_objct(titulos[0], NavIcons.getResourceId(0,-1)));
         NavItems.add(new item_objct(titulos[1], NavIcons.getResourceId(1,-1)));
+        NavItems.add(new item_objct(titulos[2], NavIcons.getResourceId(2,-1)));
 
 
         NavAdapter= new NavigationAdapter(this, NavItems);
         NavList.setAdapter(NavAdapter);
+
+        NavList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
+                MostrarFragment(position);
+            }
+        });
+
+        //MostrarFragment(1);
 
         //Declaracion del boton y las imagenes a utilizar
         mDrawerToggle = new ActionBarDrawerToggle(
@@ -74,6 +85,46 @@ public class Main extends Activity {
 
     }
 
+    private void MostrarFragment(int position){
+
+        Fragment frag = null;
+
+        switch (position){
+            case 1:
+                frag= new HomeFragment();
+                break;
+            case 2:
+                frag= new AcercaFragment();
+                break;
+            case 3:
+                //frag= new GuiaFragment();
+                frag= new PreguntasGuia();
+                //startActivity(new Intent(this, ComunicarFragments.class));
+                break;
+            default:
+                Toast.makeText(getApplicationContext(),"Opcion"+titulos[position-1]+" no disponible!", Toast.LENGTH_SHORT).show();
+                frag= new HomeFragment();
+                position=1;
+                break;
+        }
+
+        //Validamos si el fragment no es nulo
+        if (frag != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+
+            // Actualizamos el contenido segun la opcion elegida
+            NavList.setItemChecked(position, true);
+            NavList.setSelection(position);
+            //Cambiamos el titulo en donde decia
+            setTitle(titulos[position-1]);
+            //Cerramos el menu deslizable
+            NavDrawerLayout.closeDrawer(NavList);
+        } else {
+            //Si el fragment es nulo mostramos un mensaje de error.
+            Log.e("Error  ", "MostrarFragment"+position);
+        }
+    }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -141,13 +192,55 @@ public class Main extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+
+        /*
+        MenuItem buscarItem = menu.findItem(R.id.menu_buscar);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(buscarItem);
+
+        // Listener para el edit text
+        searchView.setOnQueryTextListener(this);
+        // Listener para la apertura y cierre del widget
+        MenuItemCompat.setOnActionExpandListener(buscarItem,this);
+        */
+        return super.onCreateOptionsMenu(menu);
     }
 
-    /*public void accionBoton(View v){
+    public void onArticuloSelected(String str) {
+
+        android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        Contenedor_img_fragment fragmentCUATRO;
+        fragmentCUATRO = new Contenedor_img_fragment();
+
+        Bundle args = new Bundle();
+        args.putString("str", str);
+        fragmentCUATRO.setArguments(args);
+
+        transaction.replace(R.id.content_frame, fragmentCUATRO);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
+    /*
+    public boolean onQueryTextChange(String arg0) {
+        return false;
+    }
+    public boolean onQueryTextSubmit(String arg0) {
+        return false;
+    }
+
+    public boolean onMenuItemActionCollapse(MenuItem arg0) {
+        return true;
+    }
+    public boolean onMenuItemActionExpand(MenuItem arg0) {
+        return true;
+    }*/
+/*
+   public void accionBoton(View v){
         Log.d("AppMoviles","El boton fue clickeado");
     }
-    */
+
     /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
